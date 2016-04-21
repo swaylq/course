@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="good">
+  <head>
+    <meta charset="utf-8">
+    <title>Sway</title>
+  </head>
+  <body ng-controller="GoodController">
+    <p>Shopping cart</p>
+    <table border="1">
+      <thead>
+        <th>name</th>
+        <th>price</th>
+        <th>number</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="good in goods">
+          <td>{{good.name}}</td>
+          <td>{{good.price}}</td>
+          <td><input id="ps4" type="number" ng-model="good.number"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>{{hehe}}</p>
+    <button class="btn" ng-class="{'active': hehe == 5}" ng-click="hehe = hehe + 1" ng-show="hehe <= 5">hehe</button>
+    <p id="total-price">total price: {{goods[0].price * goods[0].number + goods[1].price * goods[1].number + goods[2].price * goods[2].number}}</p>
+  </body>
+  <script src="angular.min.js"></script>
+  <script src="main.js"></script>
+</html>
