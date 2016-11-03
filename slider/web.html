@@ -1,0 +1,261 @@
+<html>
+
+<head>
+    <title>2016 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <style type="text/css">
+        #ghost {
+            position: fixed;
+            left: 50px;
+            top: 50px;
+            z-index: 999;
+            width: 150px;
+            height: auto;
+        }
+
+        @media (max-width: 960px) {
+            #ghost {
+                width: 50px;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <img id="ghost" src="images/ghost.jpg"/>
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="images/bg.jpg">
+                <h2>Web Basic</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>Contents</h3>
+                <ul>
+                    <li>An old face question</li>
+                    <li>HTML</li>
+                    <li>HTTP</li>
+                    <li>XHR</li>
+                    <li>AJAX</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>An old face question</h2>
+                    <p class="fragment">从你在浏览器里敲入域名，到最后网页呈现到眼前，发生了什么？</p>
+                </section>
+                <section>
+                    <p>1. 按下键盘，呈现到屏幕上为一串字符串</p>
+                    <p class="fragment">balabala</p>
+                    <p class="fragment">(不是这次的范围)</p>
+                </section>
+                <section>
+                    <p>2. 浏览器根据你输入域名，生成 HTTP 请求 (Request)</p>
+                    <p class="fragment">会发送一个 GET 请求</p>
+                </section>
+                <section>
+                    <p>3. HTTP 请求发生了什么？</p>
+                    <p class="fragment">xxxxxxx</p>
+                    <p class="fragment">(稍后再提)</p>
+                </section>
+                <section>
+                    <p>4. 服务端收到 HTTP 请求，生成一个回应 (Response)</p>
+                    <p class="fragment">回应是 HTML 字符串</p>
+                    <p class="fragment">(服务端做了什么？balabala……不是这次的范围)</p>
+                </section>
+                <section>
+                    <p>5. 浏览器收到 HTML 字符串，开始解析字符串</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>HTML</h2>
+                    <p>HyperText Markup Language (超文本标记语言)</p>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## A sample HTML
+                        ```
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>My first html</title>
+                        </head>
+
+                        <body>
+                            <div style="background-color: green">
+                                <p> My first paragraph </p>
+                            </div>
+                            <p>My second paragraph.</p>
+                            <button>Click me!</button>
+                        </body>
+
+                        </html>
+                        ```
+                    </script>
+                </section>
+                <section>
+                    <p>HTML 的结构是一棵树(DOM 树)</p>
+                    <img src="images/html.png" />
+                </section>
+                <section>
+                    <p>CSS 解析</p>
+                    <img src="images/css.png" />
+                </section>
+                <section>
+                    <p>DOM 树和 CSS 解析生成的样式表相结合，构成最终的渲染树</p>
+                    <p class="fragment">渲染树用一定的渲染方法和流程，将元素按排列顺序用矩形区域绘制在用户面前</p>
+                    <p class="fragment">[Review] CSS 盒模型</p>
+                </section>
+                <section>
+                   <a href="http://v.youku.com/v_show/id_XMzI5MDg0OTA0.html">小视频</a>
+                </section>
+                <section>
+                    <p>当浏览器遇到 script 标签时</p>
+                    <ul>
+                        <li>读入标签里的所有内容</li>
+                        <li>除非标签里有 defer 或者 async 属性，否则浏览器会立刻解析并且执行这些 Javacript 命令</li>
+                        <li>当有 defer 或者 async 属性时，则会在 HTML 全部解析完毕后再去解析这里的 Javascirpt</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>HTTP</h2>
+                    <p>Hypertext Transfer Protocol</p>
+                    <p>用作客户端（浏览器）和服务端进行通信</p>
+                </section>
+                <section>
+                    <p class="fragment">客户端发送 Request 给服务端，服务端返回 Response 给客户端</p>
+                    <img class="fragment" src="images/http.png" style="background-color: white"/>
+                </section>
+                <section>
+                    <p>Request 构成</p>
+                    <ul>
+                        <li>Request Header</li>
+                        <li>Request Body</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Response 构成</p>
+                    <ul>
+                        <li>Response Header</li>
+                        <li>Response Body</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>
+                        XHR
+                    </h2>
+                    <p>XMLHttpRequest</p>
+                    <ul class="fragment">
+                        <li>浏览器的 API，可以理解一个 JS 对象</li>
+                        <li>使用 HTTP 协议和服务端进行通信，并且可以在不刷新(Reload)页面的情况下获取数据</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>AJAX</h2>
+                    <p class="fragment">
+                        什么是 AJAX?
+                    </p>
+                    <p class="fragment">
+                        AJAX 是一种工作流的标准，目的是在不刷新(Reload)页面的情况局部更新(Update)页面
+                    </p>
+                </section>
+                <section>
+                    <h2>原理</h2>
+                    <ul>
+                        <li>1. 创建 XMLHttpRequest，处理发送数据</li>
+                        <li>2. 处理 Response</li>
+                        <li>3. 使用 Javascript 更新(Update)页面</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                Q & A
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
