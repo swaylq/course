@@ -1,0 +1,310 @@
+<html>
+
+<head>
+    <title>2016 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <style type="text/css">
+        #ghost {
+            position: fixed;
+            left: 50px;
+            top: 50px;
+            z-index: 999;
+            width: 150px;
+            height: auto;
+        }
+
+        @media (max-width: 960px) {
+            #ghost {
+                width: 50px;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="http://qiniu.daguchuangyi.com/crown.png">
+                <h2>Review</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">Sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>Contents</h3>
+                <ul>
+                    <li>Web Basic</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>Javascript Introduction</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>An old question</h2>
+                    <p class="fragment">从你在浏览器里敲入域名，到最后网页呈现到眼前，发生了什么？</p>
+                </section>
+                <section>
+                    <p>按下键盘，呈现到屏幕上为一串字符串</p>
+                </section>
+                <section>
+                    <p>浏览器根据你输入域名，生成 HTTP 请求 (Request)</p>
+                </section>
+                <section>
+                    <p>服务端收到 HTTP 请求，生成一个回应 (Response)</p>
+                    <p class="fragment">回应是 HTML 字符串</p>
+                </section>
+                <section>
+                    <p>浏览器收到 HTML 字符串，开始解析字符串</p>
+                </section>
+                <section>
+                    <p>HTML 的结构是一棵树(DOM 树)</p>
+                    <img src="images/html.png" />
+                </section>
+                <section>
+                    <p>CSS 解析</p>
+                    <img src="images/css.png" />
+                </section>
+                <section>
+                    <p>DOM 树和 CSS 解析生成的样式表相结合，构成最终的渲染树</p>
+                </section>
+                <section>
+                    <p>当浏览器遇到 script 标签时</p>
+                    <ul>
+                        <li>读入标签里的所有内容</li>
+                        <li>除非标签里有 defer 或者 async 属性，否则浏览器会立刻解析并且执行这些 Javacript 命令</li>
+                        <li>当有 defer 或者 async 属性时，则会在 HTML 全部解析完毕后再去解析这里的 Javascirpt</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>HTML</h2>
+                    <p>HyperText Markup Language (超文本标记语言)</p>
+                </section>
+                <section data-markdown>
+                    <script type="text/template">
+                        ## A sample HTML
+                        ```
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>My first html</title>
+                        </head>
+
+                        <body>
+                            <div style="background-color: green">
+                                <p> My first paragraph </p>
+                            </div>
+                            <p>My second paragraph.</p>
+                            <button>Click me!</button>
+                        </body>
+
+                        </html>
+                        ```
+                    </script>
+                </section>
+                <section>
+                    <h2>元素</h2>
+                    <p>HTML 是由一系列的元素组成</p>
+                </section>
+                <section>
+                    <h2>标签</h2>
+                    <p>元素一般由起始标签和结束标签组成，标签中间为元素的内容，可以是文字也可以是子元素，当前某些标签例外，比如 img, input</p>
+                </section>
+                <section>
+                    <h2>属性</h2>
+                    <p>标签中可以填写元素的属性，例如上述的 style="background-color: green"</p>
+                </section>
+                <section>
+                    <h2>特殊的属性</h2>
+                    <p>id, class, style</p>
+                    <p class="fragment">一般来说，id 具有唯一性，在一个 HTML 文档中，不同的元素不能有相同的 id 名，而 class 则是作为类，作用是将类似的元素归纳在一起，在 CSS 中，id 作为选择器的优先级是 class 的 998 倍</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>CSS</h2>
+                </section>
+                <section>
+                    <p>CSS 选择器</p>
+                    <ul>
+                        <li>Class selectors</li>
+                        <li>ID selectors</li>
+                        <li>Attribute Selectors( Like a[href=xxx] )</li>
+                        <li>Pseudo-classes selectors ( Like :hover, :active )</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>CSS 盒模型</h2>
+                    <img src="http://occte31r6.bkt.clouddn.com/blog/images/css-box.png"/>
+                </section>
+                <section>
+                    <h2>CSS 两种重要布局属性</h2>
+                    <ul>
+                        <li>display</li>
+                        <li>position</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>display</h2>
+                    <ul>
+                        <li>block</li>
+                        <li>inline</li>
+                        <li>table</li>
+                        <li>flex</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>position</h2>
+                    <ul>
+                        <li>static</li>
+                        <li>relative</li>
+                        <li>absolute</li>
+                        <li>fixed</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>CSS 预处理器</h2>
+                    <p>用一种编程语言，为 CSS 增加一些编程的特性，并可以用相应的编译器将其转化成 CSS 文件</p>
+                    <p>常见的 CSS 预处理器：SASS, LESS</p>
+                </section>
+                <section>
+                    <h2>优点</h2>
+                    <ul>
+                        <li>Nested (嵌套式，递归式写法）</li>
+                        <li>变量</li>
+                        <li>...</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>浏览器兼容性</h2>
+                    <p class="fragment">浏览器内核(浏览器渲染引擎)</p>
+                    <ul class="fragment">
+                        <li>Webkit(主要是 Safari)</li>
+                        <li>Blink(基于 Webkit2, Chrome 28 版本开始使用，Opera 紧随 Chrome，几个月前微信内置 X5 浏览器也开始基于 Blink)</li>
+                        <li>Chromium(基于 Webkit, Chrome 28 版本前所使用，Opera 紧随 Chrome)
+                        <li>Gecko(Mozilla Firefox)</li>
+                        <li>Trident(IE)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>解决兼容性问题</h2>
+                    <p>Autoprefixer</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Javascript Introduction</h2>
+                    <ul>
+                        <li>单线程</li>
+                        <li>事件驱动</li>
+                        <li>面向对象</li>
+                        <li>跨平台</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>基本语法特性</h2>
+                    <ul>
+                        <li>变量类型</li>
+                        <li>函数定义</li>
+                        <li>作用域</li>
+                        <li>基本控制语句</li>
+                        <li>原型和原型链</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>基于浏览器环境下的 Javascript</h2>
+                    <p>DOM API</p>
+                    <ul>
+                        <li>查找，生成，删除，修改元素</li>
+                        <li>用户行为的事件监听</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>A sample</h2>
+                    <img src="images/js-sample.png">
+                </section>
+            </section>
+            <section>
+                Q & A
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
