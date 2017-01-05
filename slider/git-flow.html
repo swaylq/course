@@ -1,0 +1,242 @@
+<html>
+
+<head>
+    <title>2016 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="images/鲁路修.jpg">
+                <h2>Git 工作流</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>Contents</h3>
+                <ul>
+                    <li>Git 使用回顾</li>
+                    <li>分支管理</li>
+                    <li>Merge Request</li>
+                    <li>Code Review</li>
+                    <li>版本控制与持续交付</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>Git 使用回顾</h2>
+                </section>
+                <section>
+                    <h2>本地工作流</h2>
+                    <ul>
+                        <li>git clone</li>
+                        <li>git add</li>
+                        <li>git commit</li>
+                        <li>git push</li>
+                        <li>git pull (Auto-merge Or Solve conflict)</li>
+                    </ul>
+                    <p class="fragment">Tips: 去除无须版本控制的文件，配置信息统一文件</p>
+                </section>
+                <section>
+                    <h2>分支管理</h2>
+                    <ul>
+                        <li>出现过以自己名字命名分支</li>
+                        <li>目前大多数为有一定标准的 master / dev 双分支管理</li>
+                    </ul>
+                    <p class="fragment">失去了 Git 分支管理的意义，对于需要持续交付且上线的项目，多人在同一分支上开发，无法准确地构筑 stable 版本，无法进行 Code Review</p>
+                </section>
+                <section>
+                    <p>代码 Merge</p>
+                    <p class="fragment">目前都是本地 Merge</p>
+                    <p class="fragment">有时候无法解决冲突从而引起 commit history 混乱，无法进行 Code Review</p>
+                </section>
+                <section>
+                    <p>Code Review</p>
+                    <p class="fragment">目前没有多少 Code Review</p>
+                    <p class="fragment">从今天开始，每个项目将展开 Code Review</p>
+                </section>
+                <section>
+                    <p>版本控制与持续交付</p>
+                    <p class="fragment">目前使用 master / dev 双分支管理，难以随时构筑出稳定版本</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>分支管理</h3>
+                    <p>不再根据开发者切分支，而是根据项目所需切分支，分支的命名和分支的合并需要严格把控</p>
+                </section>
+                <section>
+                    <h3>分支种类</h3>
+                    <ul>
+                        <li>主分支，master, develop 都属于主分支</li>
+                        <li>Feature 分支，一个功能模块的分支</li>
+                        <li>Bug 分支，临时解决 Bug 而划出的分支</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>主分支</h3>
+                    <p>顾名思义，主分支，其他分支的汇总</p>
+                    <ul>
+                        <li>维持一个稳定版本的持续构筑：master 分支</li>
+                        <li>测试：test 分支</li>
+                        <li>开发：develop 分支</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Feature 分支</h3>
+                    <p>一个功能模块的分支</p>
+                    <ul>
+                        优点：
+                        <li>以分支的形式进行一个个功能模块的划分，避免了一条开发分支上多个功能的并行开发，使得无法构筑一个稳定的版本</li>
+                        <li>利于 Code Review</li>
+                    </ul>
+                    <p class="fragment">命名规范：feature/xxxx，例：feature/nextrain</p>
+                </section>
+                <section>
+                    <h3>Bug 分支</h3>
+                    <p>临时解决 Bug</p>
+                    <p>试想某种情况，产品出现了 Bug，然而 develop 分支还在继续开发，无法立刻构筑一个稳定的版本，此刻最恰当的处理方式，就是从 master 分支上切出一个分支，解决完 Bug 之后，合并到所有需要的主分支上</p>
+                    <p class="fragmeng">命名规范：bug/xxxx，例：bug/fix-typo</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>Merge Request</h3>
+                    <p>当使用多分支进行项目的开发时，必定涉及到分支合并的问题</p>
+                    <p class="fragment">使用 Merge Request 进行分支的合并</p>
+                </section>
+                <section>
+                    <h3>如何操作?</h3>
+                </section>
+                <section>
+                    <p>Tips: Merge Request 之前应该先将目标分支合并到自身</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Code Review</h2>
+                </section>
+                <section>
+                    <p>触发事件</p>
+                    <ul>
+                        <li>重大 Feature 分支的合并</li>
+                        <li>重大 Bug 的出现</li>
+                        <li>某人对自己一段代码的沾沾自喜</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>开展方式</h2>
+                    <p>公司投影仪</p>
+                </section>
+                <section>
+                    <h2>成员</h2>
+                    <p>不限</p>
+                </section>
+                <section>
+                    <h2>申请方式</h2>
+                    <p>不限，任何成员觉得应该 Code Review，都可以在项目的群里提出，当有触发事件时，负责人应该主动提出</p>
+                </section>
+                <section>
+                    <h2>形式？</h2>
+                    <p>看 commit</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>版本控制与持续交付</h3>
+                    <p>大多数项目都需要持续开发以及持续构筑稳定版本</p>
+                </section>
+                <section>
+                    <ul>
+                        <li>做好分支管理和 Code Review</li>
+                        <li>维护好主分支的稳定性，比如 master 分支作为最终交付的分支，则应该保持该分支的最新提交的代码是正确的</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>使用 tag 来标注版本</h3>
+                    <ul>
+                        <li>git tag -a v1.0 -m 'My Version 1.0'</li>
+                        <li>git push origin v1.0</li>
+                        <li>git push origin --tags</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                Q & A
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
