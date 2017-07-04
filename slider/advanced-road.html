@@ -1,0 +1,237 @@
+<html>
+
+<head>
+    <title>2017 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="2017 Zhi Nan Courses By Sway">
+    <meta name="author" content="sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="images/bg.jpg">
+                <h2>程序员进阶之路</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <section>
+                    <h2>解决问题的能力</h2>
+                    <ul class="fragment">
+                        <li>Google 搜索</li>
+                        <li>Debug</li>
+                        <li>计算机思维</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Google 搜索</h2>
+                    <ul>
+                        <li>报错信息直接复制</li>
+                        <li>多个英文关键词</li>
+                        <li>混入中文</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Debug</h2>
+                    <p>定位问题, 排除法</p>
+                    <p class="fragment">提高代码模块化，方便定位问题</p>
+                </section>
+                <section>
+                    <h2>计算机思维</h2>
+                    <p class="fragment">计算机思维这个概念很大，但说白了，其实就是为了把工作交给机器学习，我们需要了解计算机能做什么，了解如何命令计算机（计算机语言）</p>
+                    <p class="fragment">当遇到问题时，我们需要从计算机的角度思考，思考如何交给计算机解决这个问题</p>
+                </section>
+                <section>
+                    <p>3. 使用任何你喜欢的语言，实现以下结果：遍历数字 1 ~ 100，其中，逢 3 的倍数输出 Fizz，逢 5 的倍数输出 Buzz，又是 3 又是 5 的倍数则只输出 FizzBuzz。</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>代码质量的提高</h2>
+                    <ul>
+                        <li>简短</li>
+                        <li>可读性</li>
+                        <li>模块化</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>缩短代码行数</h2>
+                    <ul>
+                        <li>思考最佳实践</li>
+                        <li>去除无用代码</li>
+                        <li>多利用语法糖，多使用语言或者运行环境的内置函数</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>增强代码可读性</h2>
+                    <ul>
+                        <li>遵循团队代码规范</li>
+                        <li>思考最佳实践</li>
+                        <li>合理的变量命名</li>
+                        <li>不要出现神奇的循环语句和 if 语句嵌套</li>
+                        <li>注释</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>模块化代码</h2>
+                    <ul>
+                        <li>将可复用的代码写成函数或者类，避免使用复制粘贴，对函数和类添加详细的注释说明，使得他人可以使用</li>
+                        <li>经验，锻炼自己抽象化的能力</li>
+                        <li>大局观</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>优秀实践</h2>
+                </section>
+               <section>
+                    <p>使用 JavaScript 写出一个连加函数，使用方法如下：</p>
+                    <p>add(1)(2)(3); //output 7</p>
+                    <p class="fragment">一行代码即可</p>
+                    <img class="fragment" src="images/add-function.png"/>
+                </section>
+                <section>
+                    <p>forEach 用法</p>
+                    <img src="images/forEach.png" alt="">
+                </section>
+                <section>
+                    <p>map 用法</p>
+                    <img src="images/map.png" />
+                </section>
+                <section>
+                    <p>reduce 用法</p>
+                    <img src="images/reduce.png" />
+                </section>
+                <section>
+                    <p>filter 用法</p>
+                    <img src="images/filter.png" />
+                </section>
+                <section>
+                    <h2>错误实践举例</h2>
+                </section>
+                <section>
+                    <p>控制语句乱用</p>
+                    <img src="images/error-demo2.png" />
+                </section>
+                <section>
+                    <p>正确写法</p>
+                    <img src="images/right-demo1.png" />
+                </section>
+                <section>
+                    <p>不用内置函数，自己额外实现</p>
+                    <img src="images/error-demo1.png" />
+                </section>
+                <section>
+                    <p>乱用 map 函数</p>
+                    <img src="images/error-demo3.png" />
+                </section>
+                <section>
+                    <p>正确写法</p>
+                    <img src="images/right-demo2.png" alt="">
+                </section>
+                <section>
+                    <p>写死配置</p>
+                    <img src="images/error-demo4.png" alt="">
+                </section>
+                <section>
+                    <p>奇特的变量命名</p>
+                    <img src="images/error-demo5.png" alt="">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>拓宽知识面</h2>
+                </section>
+                <section>
+                    <ul>
+                        <li>逛逛社区</li>
+                        <li>订阅 RSS</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>自学能力</h2>
+                    <ul>
+                        <li>信息检索，阅读</li>
+                        <li>分析理解，在脑海中构建出系统性的知识框架</li>
+                        <li>实践，写 Demo 或运用到实际项目中</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                Thank you!
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
