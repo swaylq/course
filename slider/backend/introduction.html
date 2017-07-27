@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <title>2017 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="./GOT.jpg">
+                <h2>Backend Basic</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>Contents</h3>
+                <ul>
+                    <li>现代 Web 开发架构</li>
+                    <li>RESTful</li>
+                    <li>数据库基础</li>
+                    <li>Node.js 基础</li>
+                    <li>Koa 以及 Koa-swagger-decorator 的使用</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>现代 Web 开发架构</h2>
+                    <img src="./web-structure.jpg">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>RESTful</h2>
+                    <p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></p>
+                    <p><a href="http://www.ruanyifeng.com/blog/2011/09/restful">理解 RESTful 架构</a></p>
+                </section>
+                <section>
+                    <p>一句话概括，RESTful 描述的是在网络中前端和后端的一种交互形式，使用 URL 定位资源，用 HTTP 动词定义操作</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>数据库基础</h2>
+                </section>
+                <section>
+                    <h2>是什么？什么作用？怎么用？</h2>
+                    <ul>
+                        <li>数据库指的是以一定方式储存在一起，能为多个用户共享，具有尽可能小的冗余度，与应用程序彼此独立的数据集合。</li>
+                        <li>在 Web 开发中，数据库主要是为了持久性的存储网站的数据</li>
+                        <li>图形化管理界面; Commend Line ; ORM</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>数据库种类</p>
+                    <ul>
+                        <li>关系型数据库: MySQL</li>
+                        <li>非关系型数据库：MongoDB, Redis</li>
+                        <li>NewSQL: TiDB</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>关系型数据库</p>
+                    <a href="https://dev.mysql.com/doc/">MySQL 文档</a>
+                </section>
+                <section>
+                    <p>非关系型数据库</p>
+                    <a href="https://docs.mongodb.com">MongoDB 文档</a>
+                </section>
+                <section>
+                    <p>ORM</p>
+                    <p>Object-relational mapping: 对象关系映射</p>
+                    <p>将程序中的对象和数据库中的数据进行一一映射，极大地减少了和数据库交互的复杂性</p>
+                    <ul>
+                        <li>MySQL: <a href="http://docs.sequelizejs.com/">Sequelize</a></li>
+                        <li>MongoDB: <a href="http://mongoosejs.com/">Mongoose</a></li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>
+                        Node.js 基础
+                    </h2>
+                    <p>异步, 时间驱动的 JavaScript 运行时</p>
+                </section>
+                <section>
+                    <img src="./demo1.png" alt="">
+                </section>
+                <section>
+                    <p>
+                        但是光有 http 模块是不够的，为了搭建 RESTful API，我们需要根据不同的请求做出不同的响应，这时候我们就需要一些框架和库来管理 router
+                    </p>
+                    <p class="fragment">这里我们用 Node.js 的新一代框架 Koa</p>
+                </section>
+                <section>
+                    进入代码现场编写环节
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>Koa-swagger-decorator 的使用</h2>
+                </section>
+            </section>
+            <section>
+                Q & A
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
