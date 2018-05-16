@@ -1,0 +1,146 @@
+<html>
+
+<head>
+    <title>年会总结</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="images/bg.jpg">
+                <h2>多一份思考，少一行代码</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>内容</h3>
+                <ul>
+                    <li>技术</li>
+                    <li>工作</li>
+                    <li>生活</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>技术上的思考</h2>
+                    <p class="fragment">写代码的本质就是在思考</p>
+                </section>
+                <section>
+                    <p>1. 从细节的最佳实践进行思考</p>
+                    <p class="fragment">追求解决每一个问题的最佳实践</p>
+                    <p class="fragment">寻求代码简洁，性能最高，可读性最高的方案</p>
+                </section>
+                <section>
+                    <p>2. 在工程性问题上，从整体的结构进行思考</p>
+                    <p class="fragment">有大局观，可以将复杂的项目结构化，使其条理清洗，健壮性高</p>
+                </section>
+                <section>
+                    <p>不去思考的代码会变成什么样呢？</p>
+                    <p class="fragment">就像不去思考的人一样，变得臃肿不堪，也脆弱不堪</p>
+                </section>
+                <section>
+                    <p>一个典型的反面例子</p>
+                    <p class="fragment">一个神奇的项目</p>
+                    <p class="fragment">……………………</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>工作上的思考</h2>
+                    <ul>
+                        <li  class="fragment">多一份思考，少一行代码</li>
+                        <li  class="fragment">多一份思考，少一个图层</li>
+                        <li  class="fragment">多一份思考，少一次不必要的沟通</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>生活上的思考</h2>
+                    <p>生活中无论做什么都应该学会独立思考，善于思考</p>
+                </section>
+                <section>
+                    <img src="images/思考模型.jpg" />
+                </section>
+            </section>
+            <section>
+                谢谢大家
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>

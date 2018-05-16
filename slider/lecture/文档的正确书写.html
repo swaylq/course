@@ -1,0 +1,332 @@
+<html>
+
+<head>
+    <title>文档的正确书写</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <style>
+        * {
+            font-family: Ping Fang !important;
+        }
+        .example p {
+            text-align: left;
+        }
+        .reveal ul {
+            list-style-type: decimal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="images/bg.jpg">
+                <h2>文档的正确书写</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h3>内容</h3>
+                <ul>
+                    <li>空格的处理</li>
+                    <li>标点符号</li>
+                    <li>专有名词</li>
+                    <li>段落、引用、风格</li>
+                    <li>Markdown</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>空格的处理</h2>
+                    <p class="fragment">
+                        有研究顯示，打字的時候不喜歡在中文和英文之間加空格的人，感情路都走得很辛苦，有七成的比例會在 34 歲的時候跟自己不愛的人結婚，而其餘三成的人最後只能把遺產留給自己的貓。畢竟愛情跟書寫都需要適時地留白。
+                    </p>
+                    <a class="fragment" href="https://github.com/vinta/pangu.js/blob/master/README.md">為什麼你們就是不能加個空格呢？</a>
+                </section>
+                <section>
+                    <p>常用字符的简单分类</p>
+                    <ul>
+                        <li>中文字符</li>
+                        <li>英文字符（半角）</li>
+                        <li>阿拉伯数字</li>
+                        <li>全角标点</li>
+                        <li>半角标点</li>
+                    </ul>
+                </section>
+                <section>
+                    <strong>1. 中文字符、英文字符、阿拉伯数字，任意两种字符之间添加空格（特殊名词除外，例如 ES2015）。</strong>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>Sway的生日是9月13号，大家记得要送他生日礼物哦。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">Sway 的生日是 9 月 13 号，大家记得要送他生日礼物哦。</p>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>我的电脑硬盘有100TB 大小。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">我的电脑硬盘有 100 TB 大小。</p>
+                </section>
+                <section>
+                    <strong>2. 全角标点前后都不需要加空格。</strong>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>她说 ：『玲珑骰子安红豆 』</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">她说：『玲珑骰子安红豆』</p>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>我想了想， 说：『我知。 』</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">我想了想，说：『我知。』</p>
+                </section>
+                <section>
+                     <strong>3. 半角标点，前标点（前括号，前引号）在前面加一个空格，其余标点，在后面加一个空格（句末除外），标点之间不需要加空格。</strong>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>Eric( Cheng Chu)is a muscle man.He likes to show his muscle in public.</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">Eric (Cheng Chu) is a muscle man. He likes to show his muscle in public.</p>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>他(Gay? )到底是不是直男， 谁也不知道。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">他（Gay?）到底是不是直男，谁也不知道。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">他 (Gay?) 到底是不是直男，谁也不知道。</p>
+                </section>
+                <section>
+                    <strong>4. 超链接两边加空格，遇到全角字符可不加</strong>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>分享一个<a href="http://github.com">同性交友网站</a>，你会爱上它的。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">分享一个 <a href="http://github.com">同性交友网站</a>，你会爱上它的。</p>
+                </section>
+                <section class="example">
+                    <h2>总结</h2>
+                    <p>1. 中文、英文字符、数字，任意两种之间添加空格（特殊名词除外，例如 ES2015）。</p>
+                    <p>2. 全角标点前后都不需要加空格。</p>
+                    <p>3. 半角标点，前标点（前括号，前引号）在前面加一个空格，其余标点，在后面加一个空格（句末除外），标点之间不需要加空格。</p>
+                    </ul>
+                    <p>4. 超链接两边加空格</p>
+                </section>
+                <section>
+                    <p>当然，还是会有一些特殊情况的</p>
+                    <div class="fragment">例如：时间的书写，18:00, 2012/12/01</div>
+                    <p class="fragment">等等，需要自己灵活应变</p>
+                </section>
+                <section>
+                    <h2>工作中的错误案例</h2>
+                    <p>太多太多...</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>标点符号</h2>
+                    <ul>
+                        <li>半角标点符号</li>
+                        <li>全角标点符号</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>前后都是中文句子时，用全角标点符号。</li>
+                        <li>前后都是英文句子时，用半角标点符号。</li>
+                        <li>前后分别为中文句子和英文句子，用全角和半角都可以。</li>
+                    </ul>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>当你在凝视 Bug 的时候,Bug 也在凝视你.</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">当你在凝视 Bug 的时候，Bug 也在凝视你。</p>
+                </section>
+                <section class="example">
+                    <p>错误：</p>
+                    <p>He is a gay，you too！</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">He is a gay, you too!</p>
+                </section>
+                <section class="example">
+                    <p>正确：</p>
+                    <p>储程（Eric, male）喜欢唱苦情歌。</p>
+                    <p>正确：</p>
+                    <p>储程 (Eric, male) 喜欢唱苦情歌。</p>
+                </section>
+                <section class="example">
+                    <h3>工作中的错误案例</h3>
+                    <p>错误：</p>
+                    <p>我们公司做过ERP、CRM、微信营销等。</p>
+                    <p class="fragment">正确：</p>
+                    <p class="fragment">我们公司做过 ERP, CRM, 微信营销等。</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>专有名词</h2>
+                    <ul>
+                        <li>专有名词使用正确的大小写。</li>
+                        <li>不要使用自己创造的缩写。</li>
+                    </ul>
+                </section>
+                <section class="example">
+                    <p>正确：</p>
+                    <p>使用 GitHub 登录</p>
+                    <p>错误：</p>
+                    <p>使用 github 登录</p>
+                    <p>使用 Github 登录</p>
+                    <p>使用 gitHub 登录</p>
+                    <p>使用 GITHUB 登录</p>
+                </section>
+                <section class="example">
+                    <p>正确：</p>
+                    <p>苹果更新了 iOS 系统</p>
+                    <p>错误：</p>
+                    <p>苹果更新了 ios 系统</p>
+                    <p>苹果更新了 IOS 系统</p>
+                    <p>苹果更新了 Ios 系统</p>
+                    <p>苹果更新了 IoS 系统</p>
+                </section>
+                <section class="example">
+                    <p>正确：</p>
+                    <p>我们需要招聘一个熟悉 JavaScript, HTML5, AngularJS 的前端开发者。</p>
+                    <p>错误：</p>
+                    <p>我们需要招聘一个熟悉 Js, h5, angular 的前端开发者。</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>段落</h3>
+                    <ul>
+                        <li>文档不是作文，开头不要有留白</li>
+                        <li>段落之间应该留有空行</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>正确：</p>
+                    <p>
+                        这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。
+                        <br><br>
+                        这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。这是一个很长的段落。
+                    </p>
+                </section>
+                <section>
+                    <h3>引用</h3>
+                    <p>如果在正文中部分引用第三方内容，请使用恰当的引用格式并给出出处。如：</p>
+                    <small>One man’s constant is another man’s variable. — Alan Perlis</small>
+                </section>
+                <section>
+                    <p>如果是全篇转载，请在全文开头显著位置注明出处并链接至原文，如：</p>
+                    <small>本文转载自 WikiQuote</small>
+                </section>
+                <section>
+                    <p>如果格式不允许超链接，请以文本方式直接给出原文链接。如果原文链接太长影响美观，可以使用短链接服务。如：</p>
+                    <small>本文转载自 WikiQuote：http://bit.ly/UlHIdN</small>
+                </section>
+                <section>
+                    <h3>文案风格</h3>
+                    <ul>
+                        <li>没有错别字。</li>
+                        <li>没有病句。</li>
+                        <li>我们崇尚精练的文风。请在检查中把对表达意思没有明显作用的字、词、句删除，在不影响表达效果的前提下把文案长度减到最短。</li>
+                    </ul>
+                </section>
+                <section class="example">
+                    <p>正确：</p>
+                    <p>我赞成这个提议。</p>
+                    <p>错误：</p>
+                    <p>我十分且非常强烈得赞成这个提议！</p>
+                    <p>错误：</p>
+                    <p>哇，你说的太棒了，我迫不及待地要去赞成这个提议了！</p>
+                </section>
+            </section>
+            <section>
+                <strong>以上书写规范同样适用于工作中的文字沟通</strong>
+            </section>
+            <section>
+                <section>
+                    <p>Markdown</p>
+                </section>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
