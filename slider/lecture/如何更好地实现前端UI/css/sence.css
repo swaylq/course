@@ -1,0 +1,93 @@
+body {
+  background: #2d3338;
+}
+section {
+  font-family: PingFang SC, Helvetica Neue, Helvetica, -apple-system, BlinkMacSystemFont, Roboto, Arial, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif !important;
+}
+section h1,
+section h2,
+section h3,
+section h4,
+section h5 {
+  font-family: PingFang SC, Helvetica Neue, Helvetica, -apple-system, BlinkMacSystemFont, Roboto, Arial, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif !important;
+}
+section > * {
+  text-align: justify;
+}
+section > p {
+  text-indent: 2em;
+  text-align: justify;
+}
+section h2 {
+  text-align: center;
+}
+section .center {
+  text-align: center;
+}
+section .welt {
+  margin: 20px 0;
+}
+section .code {
+  font-size: .75em;
+}
+section .code-group > .code {
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px;
+  height: 155px;
+  background: #333;
+}
+section .code-group > .code + .code {
+  margin-left: 65px;
+}
+section h2 {
+  text-align: center;
+}
+.sence-0 .img-section img {
+  display: inline-block;
+  width: 450px;
+}
+.sence-0 .img-section .block {
+  margin: 0 auto;
+  width: 270px;
+  text-align: left;
+}
+.sence-0 .img-section-cover img {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
+.sence-0 .img-section-cover-twice img {
+  display: block;
+}
+.ul-section ul {
+  margin-left: 80px;
+}
+ul.horizon > li {
+  float: left;
+  margin-right: 60px;
+  width: 325px;
+}
+.sence-0 .wrap-btn {
+  margin-top: 50px;
+}
+.sence-0 .btn {
+  border: 0;
+  width: 200px;
+  height: 80px;
+  font-size: 30px;
+  background: #c1c1c1;
+  cursor: pointer;
+}
+.sence-0 .btn:hover {
+  color: #fff;
+  box-shadow: 0 0 12px 0 #fff;
+  background: #ecaa47;
+}
+.sence-0 .btn:active {
+  background: #c2801d;
+}
+.sence-0 .btn-2 {
+  margin-left: 80px;
+  transition: .5s;
+}

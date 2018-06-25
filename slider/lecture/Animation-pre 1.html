@@ -1,0 +1,432 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Animation Pre</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/moon.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <p style='text-align: center'>前端开发中的动画与动效</p>
+                    <small> 汪申鹏 </small>
+                </section>
+                <section>
+                    <h3>内容：</h3>
+                    <ul>
+                        <li class='fragment'>CSS3 Animation</li>
+                        <li class='fragment'>Canvas 和 svg</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3><b>简介</b></h3>
+                    <p>CSS3 动画的设定很简单，只需设定动画过程中每个节点的属性值（最简单的是直接设定头尾两点的属性），然后 CSS3 会使用默认或者用户自定义的缓动函数帮你补全动画过程</p>
+                </section>
+                <section>
+                    <section>
+                    <h3><b>transform 属性</b></h3>
+                    <div class="double">
+                        <div class="text">
+                            <p class='fragment'>transfrom 属性在 CSS3 动画中是很有用的，常用的 transform 属性有 translate、rotate、skew、scale，可以看到这里都是线性变换，所以如果对线性代数足够熟悉，可以想到可以通过一个线性变换矩阵来完成这所有的操作 </p>
+                            <p class='fragment'>即 matrix 属性，二维的 matrix 有六个参数，用法为 matrix(a,b,c,d,e,f)，我们来看一看实例</p>
+                        </div>
+                        <pre>
+                            <code class='css'>
+    @keyframes linear-transform {
+        100%{ transform: matrix(1, 0, 0, 1, 100, -50) }
+    }
+                            </code>
+                        </pre>
+                    </div>
+                    </section>
+                    <section>
+                        <h3><b>transform 属性</b></h3>
+                        <span>
+                            <button id="button1">开始动画</button>
+                            <button id="button2">暂停动画</button>
+                        </span>
+                        <div class="column">
+                            <div class="canvas">
+                                <div class="aqua-box" id="box1"></div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>使用 matrix 的意义</b></h3>
+                        <p class='fragment' style='font-size: 20px'>对某些复杂图形，使用常规的 transform 属性很难一眼看出来他的分解，这时稍微用你的笔计算一下并且即可用 matrix 快速实现。</p>
+                        <p class='fragment' style='font-size: 20px'>例如：实现对以 y=kx 为对称轴的镜面对称效果。</p>
+                        <p class='fragment' style='font-size: 20px'>确实，这里也可以通过 rotateZ(-θ) + rotateY(180) + rotateZ(-θ) 来实现，然而，当变换越来越多的时候，可以直接的一步求到最后的 matrix 也不见得是复杂的方法</p>
+                        <p class='fragment' style='font-size: 20px'>我们这里只是介绍一种理解 transform 各种属性的 matrix 表现方式。有兴趣的同学可以参考 同济大学线性代数第六版。</p>
+                        <p class='fragment' style='font-size: 20px'>最后，记住一点，当你理解不了 matrix 的时候，别人是更理解不了的，可以把它当做一种高端的黑盒子，别人完全窥视不到他的内部实现细节。</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3><b>CSS3 的曲线运动</b></h3>
+                        <div class="double">
+                            <div class="text">
+                                <p class='fragment'>我们知道一个曲线运动可以被分解成 X/Y 两个方向上的不同步运动，然后合成即可，然而 CSS3 transform 是唯一属性，不可能同时存在两个 transform，这就导致我们不可能在同一个元素上应用两个方向上的动画。</p>
+                                <p class='fragment'>为了解决这种问题，我们可以在需要曲线运动的元素外套一个自适应大小的盒子，对元素进行一个方向上的变化，对盒子进行另一个方向上的变化。</p>
+                            </div>
+                            <pre>
+                                <code>
+    /* 错误代码
+    .animation {
+        animation: xaxis linear 2s, yaxis ease 2s;
+    }
+    @keyframes xaxis {
+        100% { transform: translateX(100px) }
+    }
+    @keyframes yaxis {
+        100% { transform: translateY(-100px) }
+    }
+    */
+                                </code>
+                            </pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>CSS3 的曲线运动</b></h3>
+                        <span>
+                            <button id='button3'>开始动画</button>
+                            <button id='button4'>暂停动画</button>
+                        </span>
+                        <div class="column">
+                            <div class="canvas">
+                                <div class='outer-box' id='box3'>
+                                    <div class="aqua-box" id="box2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3><b>transfrom 3D</b></h3>
+                        <div class="double">
+                            <div class="text">
+                                <p class='fragment'>我们刚刚说的都是关于 2D 维度的动画效果，而 CSS3 是可以支持简单的 3D 变化的，方法依旧和之前介绍的一样，只不过多了一个 Z 轴的位移、旋转和拉伸效果。</p>
+                                <p class='fragment'>用法也和之前一样，使用的时候只需要有一个关于 3D 部分的想法即可，其中比较重要的是 transform-style、transform-origin 和 perspective。
+                                    <a href='https://www.w3cschool.cn/css3/g5lhsflm.html' style="color: black"><br/>更多 transform 属性</a>
+                                    <a href='https://www.w3cschool.cn/css3/css3-animation.html' style="color: black"><br>更多 CSS3 3D 动画实例</a>
+                                </p>
+                            </div>
+                            <pre>
+                                <code>
+        .transform3D {
+            transform-origin: 0 50% 0;
+            transform-style: preserved-3d;
+            perspective: 300px;
+        }
+                                </code>
+                            </pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>transform 3D</b></h3>
+                        <span>
+                            <button id='button5'>开始动画</button>
+                            <button id='button6'>暂停动画</button>
+                        </span>
+                        <div class='column'>
+                            <div class="canvas">
+                                <div class="hover-box">
+                                    <div class='aqua-box' id='box4'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="column">
+                            <h3><b>transform 3D</b></h3>
+                            <p>demo</p>
+                            <div class="canvas">
+                                <div id="box5">
+                                    <img src='http://qiniu.daguchuangyi.com/maosquerade/1527845346679-f597690c021088e183cd94e2d40d30c.png' />
+                                    <div class='danmu'><p style="color: black; font-size: 24px; line-height: 300px;"> 一首凉凉送给大家</p></div>
+                                </div>
+                            </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3><b>为什么使用 transform 属性</b></h3>
+                        <div class="double">
+                            <div class="text">
+                                <p class='fragment'>简单来说，浏览器渲染 html 代码时，有两个大阶段，计算和渲染。当我们使用 left、margin 之类的布局属性控制动画时，会直接影响计算阶段，每一次渲染前浏览器都会重新计算这个元素及其子元素的布局，计算完之后再交给浏览器渲染。</p>
+                                <p class='fragment'>而 transform 属性只影响元素的渲染阶段，在浏览器把图层渲染之前会检查元素的 transform 属性，省去了计算阶段，从而加速了渲染速度，增加动画流畅度。</p>
+                            </div>
+                            <pre>
+                                <code>
+    @keyframes animation {
+        100% { transform: translateX(100px) }
+        // 100% { left: 100px }
+    }                                
+                                </code>
+                            </pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>为什么使用 transform 属性</b></h3>
+                        <span>
+                            <button id='button7'>开始动画</button>
+                            <button id='button8'>暂停动画</button>
+                        </span>
+                        <div class="column">
+                            <div class="canvas">
+                                <div class='aqua-box' id='box6'>
+                                    <div class='inner-box'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3><b>canvas 标签</b></h3>
+                        <div class="column">
+                            <div class="text">
+                                <p class='fragment'>canvas 标签在 html 中是作为一个图形容器，跟名字一样，是一块画布，具体画布上画什么，怎么画，都是由笔 (js 脚本) 控制的。</span></p>
+                                <p class='fragment'>例如，我们想要在画布上画一条直线，要做的很简单，把笔移动到起始点，把笔放下接触到画布，画一条线到终点，把笔拿起来。</p>
+                                <p class='fragment'>canvas 的基本操作也就是这样，相当于用 js 控制画笔的移动，从而在画布上画出我们想要的内容。至于动画效果，就跟早期的手绘动画一样，你想要的效果每一帧都要自己画好，唯一不同的是我们可以通过 js 的各种函数来减轻我们的工作量，交给浏览器去处理。</p>        
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>svg 文件</b></h3>
+                        <div class="column">
+                            <div class="text">
+                                <p class='fragment'>svg (Scalable Vector Graphics，可伸缩矢量图形)，和它的名字一样，是基于网格图形的，可以通过文本编辑器来修改的图像文件。</p>
+                                <p class='fragment'>svg 文件最大的优点就是可以自由缩放而不影响分辨率。</p>
+                                <p class='fragment'>另外，svg 文件中每一个图形都相当于一个 dom 元素，可以自由隐藏或者显示，对某些轻量级动画有很好的适配效果。</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3><b>canvas 和 svg 的对比与选择</b></h3>
+                        <ul style='font-size: 24px'>
+                            <li class='fragment'>canvas 基于像素，而 svg 基于矢量。</li>
+                            <li class='fragment'>canvas 图形不容易自由抹擦，而 svg 图形可以自由显示与隐藏，所以相对来说 svg 的交互性更好。</li>
+                            <li class='fragment'>canvas 动画相当于 cg 动画，每一帧不同的画面。而 svg 相当于一个 2D 游戏界面，每一个物体都要渲染，渲染后再根据其位置计算其最终图层的显示。所以，当图层中物体数量较少时，用 svg 可以有绝对的优势，但是当图层物体数量增加时，svg 的渲染速度回迅速下降，这时选择 canvas 会更好。</li>
+                            <li class='fragment'>svg 毕竟是基于固定图形的，当上升到三维图层时，支持 canvas 的 three.js 明显具有更大的优势。</li>
+                            <li class='fragment'>当然，目前我们都是设计和开发分开进行的，我们基本没有自己使用 canvas 画图的必要。</li>
+                        </ul>
+                    </section>
+                </section>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js'></script>
+        <script>
+            Reveal.initialize({});
+            hljs.initHighlightingOnLoad();
+
+            $(() => {
+                $("#button1").click(() => {
+                    $("#box1").css("animation-play-state", "running");
+                });
+                $("#button2").click(() => {
+                    $("#box1").css("animation-play-state", "paused");
+                });
+                $("#button3").click(() => {
+                    $("#box2").css("animation-play-state", "running");
+                    $("#box3").css("animation-play-state", "running");
+                });
+                $("#button4").click(() => {
+                    $("#box2").css("animation-play-state", "paused");
+                    $("#box3").css("animation-play-state", "paused");
+                });
+                $("#button5").click(() => {
+                    $("#box4").css("animation-play-state", "running");
+                });
+                $("#button6").click(() => {
+                    $("#box4").css("animation-play-state", "paused");
+                });
+                $("#button7").click(() => {
+                    $("#box6").css("animation-play-state", "running");
+                });
+                $("#button8").click(() => {
+                    $("#box6").css("animation-play-state", "paused");
+                });
+            });
+        </script>
+    </body>
+</html>
+
+<style>
+    body {
+        background-color: #3696ff;
+    }
+    * {
+        color: antiquewhite;
+    }
+    * h3 {
+        font-family: arial !important;
+    }
+    p {
+        text-align: left;
+    }
+    button {
+        background: #333;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+
+    section {
+        width: 1000px;
+        white-space: wrap;
+    }
+
+    .reveal ul {
+        list-style-type: decimal;
+    }
+    .double {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    } 
+    .double .text {
+        width: 47%;
+        font-size: 20px;
+        text-align: left;
+    }
+    .double pre {
+        width: 47%;
+        border: none;
+        box-shadow: none;
+    }
+    .double pre code {
+        top: -30px;
+        height: 100%;
+        position: relative;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .column .text {
+        font-size: 24px;
+    }
+
+    .canvas
+    {
+        width: 70%;
+        height: 400px;
+        background: white;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+    }
+    .aqua-box {
+        width: 100px;
+        height: 100px;
+        background: aqua;
+    }
+    
+    /* box1 */
+    #box1 {
+        animation: matrix 3s linear infinite;
+        animation-play-state: paused;
+    }
+
+    @keyframes matrix {
+        100% { transform: matrix(1, 0, 0, 1, 100, -50) }
+    }
+
+    /* box2 box3 */
+    #box2 {
+        animation: xaxis 3s linear infinite;
+        animation-play-state: paused;
+    }
+    #box3 {
+        animation: yaxis 3s ease infinite;
+        animation-play-state: paused;
+    }
+
+    @keyframes xaxis {
+        100% { transform: translateX(100px) }
+    }
+    @keyframes yaxis {
+        100% { transform: translateY(-100px) }
+    }
+
+    /* box4 */
+    #box4 {
+        transform-origin: 50% 50% 0;
+        transform-style: preserve-3d;
+        perspective: 300px;
+        animation: transform3D 5s linear infinite paused;
+    }
+
+    @keyframes transform3D {
+        100% { transform: rotateX(180deg) }
+    }
+
+    /* box5 */
+    #box5 {
+        width: 30%;
+        transform-style: preserve-3d;
+        position: relative;
+        transition: all 3s;
+    }
+
+    #box5 >img {
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        margin: 0 0;
+    }
+    .danmu {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        opacity: 0;
+        transition: all 3s;
+        transform: translateZ(-1px) rotateY(180deg);
+    }
+
+    #box5:hover {
+        transform: rotateY(180deg);
+    }
+    #box5:hover .danmu {
+        opacity: 0.8;
+    }
+    
+    /* box6 */
+    #box6 {
+        position: relative;
+        animation: different 5s linear infinite paused;
+    }
+
+    @keyframes different {
+        100% { margin-left: 100px }
+    }
+
+    .inner-box {
+        width: 50px;
+        height: 50px;
+        animation: inner 5s linear infinite paused;
+    }
+    @keyframes inner {
+        100% { margin-left: 50px; }
+    }
+</style>
+
+//
+·如何实现曲线运动
+·贝塞尔曲线
+·transform
+·矩阵也可以说一下
+//
