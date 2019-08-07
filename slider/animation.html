@@ -1,0 +1,239 @@
+<html>
+
+<head>
+    <title>2019 Zhi Nan Courses By Sway</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Dongyue Web Studio 2016 Spring Web develop environment setup by at15">
+    <meta name="author" content="Sway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/theme/black.min.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/css/zenburn.min.css">
+    <!-- Printing and PDF exports -->
+    <!-- FIXME: this does not work properly -->
+    <script>
+        var pdfCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/pdf.min.css';
+        var paperCss = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/css/print/paper.min.css';
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? pdfCss : paperCss;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Landing page -->
+            <section data-background="http://qiniu.daguchuangyi.com/qixi.jpg">
+                <h2>网页开发中的动画</h2>
+                <p>
+                    <small>by <a href="https://github.com/swaylq" target="_blank">sway</a></small>
+                </p>
+            </section>
+            <section>
+                <h2>内容</h2>
+                <ul>
+                    <li>动画的基础知识</li>
+                    <li>组合动画的实现</li>
+                    <li>性能优化</li>
+                    <li>SVG 动画</li>
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <h2>动画的基础知识</h2>
+                </section>
+                <section>
+                    <h3>网页开发中的动画分类</h3>
+                    <ul>
+                        <li>CSS 动画，使用 JS 操作元素</li>
+                        <li>SVG 动画</li>
+                        <li>Canvas 及在 Canvas 上使用 WebGL</li>
+                    </ul>
+                </section>
+                <section>
+                        <h3>CSS3 动画</h3>
+                        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation">animation 的写法</a></p>
+                        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@keyframes 的写法(关键帧定义)</a></p>
+                    </section>
+                <section>
+                    <h3>动画的主要两个属性</h3>
+                    <ul>
+                        <li>变换</li>
+                        <li>timing-function 时间函数</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>常用变换</h3>
+                    <ul>
+                        <li>transform</li>
+                        <li>opacity</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>transform 常用方法</h3>
+                    <ul>
+                        <li>translate: 位置变换</li>
+                        <li>rotate: 旋转</li>
+                        <li>scale: 缩放</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>opacity 变换</h3>
+                    <p>渐隐，渐现</p>
+                </section>
+                <section>
+                    <h3>timing-function 时间函数</h3>
+                    <p>三次贝塞尔曲线</p>
+                    <p>曲线网站: <a href="https://cubic-bezier.com">https://cubic-bezier.com</a></p>
+                </section>
+                <section>
+                    <h3>CSS3 动画使用技巧</h3>
+                    <p>一般将 animation 写在 class 里，通过为 DOM 元素增减 class 控制元素的 animation 属性</p>
+                    <p>当 DOM 元素的 animation 属性出现了一个新的 name，浏览器会播放这个动画；当 DOM 元素的 display 从 none 到其他属性（DOM 元素被绘制在页面中），浏览器会播放 DOM 元素上所有的 animation 动画（visibility 无用）</p>
+                </section>
+                <section>
+                    <h3>使用 transition 开发动画</h3>
+                    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">transition 的用法</a></p>
+                </section>
+                <section>
+                    <h3>transition 的优缺点</h3>
+                    <ul>
+                        <li>简单，简洁</li>
+                        <li>逆向动画写起来简洁</li>
+                        <li>比较容易配合 JS 做元素的状态切换</li>
+                        <li>难以实现复杂的组合动画</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>组合动画的实现</h2>
+                </section>
+                <section>
+                    <h3>CSS3 动画实现</h3>
+                    <ul>
+                        <li>@keyframes 里定义多种状态</li>
+                        <li>animation 里组合多个动画</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>anime.js 的使用</h3>
+                    <p><a target="_blank" href="https://animejs.com/documentation/#cssProperties">教程</a></p>
+                </section>
+                <section>
+                    <h3>滚动式动画方案</h3>
+                    <p class="fragment">Sticky 的使用</p>
+                    <p class="fragment">利用 Body 的滚动，根据 scrollTop 控制动画的进度</p>
+                </section>
+                <section>
+                    <h3>复杂组合动画的案例 ———— OPPO</h3>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h2>性能优化</h2>
+                </section>
+                <section>
+                    <h3>浏览器渲染的关键工作</h3>
+                    <ul>
+                        <li>HTML 解析（Parse HTML）</li>
+                        <li>解析 CSS（Parse CSS）</li>
+                        <li>生成渲染树（Render Tree / Frame Tree）</li>
+                        <li>排版 / 重排（Layout / Reflow）</li>
+                        <li>绘图 / 重绘（Painting）</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>触发重排的属性</h3>
+                    <ul>
+                        <li>盒子模型相关属性，如 width, height, margin, padding, border 等</li>
+                        <li>定位属性，如 left, top 等</li>
+                        <li>文字属性，如 font-size，font-family, text-align</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>触发重绘的属性</h3>
+                    <p>color, border-style, background, box-shadow</p>
+                </section>
+                <section>
+                    <h3>复合层（Composite Layers）不触发重排和重绘</h3>
+                    <p>使用 transform 和 opacity 变换都将成为复合层</p>
+                </section>
+                <section>
+                    <h3>一些其他的性能优化</h3>
+                    <ul>
+                        <li>使用 requestAnimationFrame 方法，这个方法每 1 / 60 秒执行一次，以保证网站的动画帧数至少有 60 帧</li>
+                        <li>图片，视频资源的压缩和懒加载</li>
+                        <li>优化 JS 代码，减少不必要的开销</li>
+                    </ul>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h3>SVG 动画</h3>
+                    <p>SVG 动画主要为 PATH 的变换</p>
+                    <p class="flagment"><a href="https://animejs.com/documentation/#svgAttr">使用 anime.js 进行 SVG 动画</a></p>
+                </section>
+            </section>
+            <section>
+                Q & A
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/head.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/js/reveal.js"></script>
+
+    <script>
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [{
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.2.0/plugin/notes/notes.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
+</html>
